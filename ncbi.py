@@ -14,3 +14,29 @@ def search_gene(gene_name):
     results = Entrez.read(handle)
 
     return results["IdList"]
+
+def download_sequence(gene_id):
+
+    handle = Entrez.efetch(
+        db="nucleotide",
+        id=gene_id,
+        rettype="fasta",
+        retmode="text"
+    )
+
+    record = SeqIO.read(handle, "fasta")
+
+    return record
+
+def get_description(gene_id):
+
+    handle = Entrez.efetch(
+        db="nucleotide",
+        id=gene_id,
+        rettype="fasta",
+        retmode="text"
+    )
+
+    record = SeqIO.read(handle, "fasta")
+
+    return record.description

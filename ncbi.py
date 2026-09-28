@@ -138,3 +138,17 @@ def find_mane_transcript(gene_name):
         handle.close()
 
         return str(summary["AccessionVersion"])
+
+def download_genbank_record(accession):
+
+    handle = Entrez.efetch(
+        db="nucleotide",
+        id=accession,
+        rettype="gb",
+        retmode="text"
+    )
+
+    record = SeqIO.read(handle, "genbank")
+    handle.close()
+
+    return record

@@ -7,11 +7,14 @@ from ncbi import (
 from analysis import (
     analyze_sequence,
     extract_cds,
-    translate_cds
+    translate_cds,
+    parse_variant,
+    validate_variant
 )
 
 
 gene = input("Enter gene: ")
+variant = input("Enter protein variant (example R175H): ")
 
 ids = search_gene(gene)
 
@@ -60,6 +63,20 @@ if ids:
             print("Protein Length:", len(protein), "amino acids")
             print("Protein Sequence:")
             print(protein)
+
+            variant_info = parse_variant(variant)
+
+            print()
+            print("VARIANT ANALYSIS")
+            print("Variant:", variant.upper())
+            print("Original amino acid:", variant_info["original"])
+            print("Position:", variant_info["position"])
+            print("New amino acid:", variant_info["new"])
+
+            if validate_variant(protein, variant_info):
+                print("Reference check: VALID")
+            else:
+                print("Reference check: INVALID")
 
         else:
             print()

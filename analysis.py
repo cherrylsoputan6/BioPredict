@@ -31,3 +31,29 @@ def translate_cds(cds_sequence):
         return None
 
     return cds_sequence.translate(to_stop=True)
+
+def parse_variant(variant):
+
+    variant = variant.upper().strip()
+
+    original_amino_acid = variant[0]
+    new_amino_acid = variant[-1]
+    position = int(variant[1:-1])
+
+    return {
+        "original": original_amino_acid,
+        "position": position,
+        "new": new_amino_acid
+    }
+
+def validate_variant(protein, variant_info):
+
+    position = variant_info["position"]
+    expected_amino_acid = variant_info["original"]
+
+    if position < 1 or position > len(protein):
+        return False
+
+    actual_amino_acid = protein[position - 1]
+
+    return actual_amino_acid == expected_amino_acid

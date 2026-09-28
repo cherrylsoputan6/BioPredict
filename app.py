@@ -9,7 +9,8 @@ from analysis import (
     extract_cds,
     translate_cds,
     parse_variant,
-    validate_variant
+    validate_variant,
+    extract_variant_features
 )
 
 
@@ -75,6 +76,28 @@ if ids:
 
             if validate_variant(protein, variant_info):
                 print("Reference check: VALID")
+
+                features = extract_variant_features(
+                    protein,
+                    variant_info
+                )
+
+                print()
+                print("VARIANT FEATURES")
+                print(
+                    "Relative position:",
+                    f'{features["relative_position"]:.3f}'
+                )
+                print(
+                    "Hydrophobicity change:",
+                    f'{features["hydrophobicity_change"]:.2f}'
+                )
+                print(
+                    "Molecular weight change:",
+                    f'{features["weight_change"]:.2f}',
+                    "Da"
+                )
+
             else:
                 print("Reference check: INVALID")
 

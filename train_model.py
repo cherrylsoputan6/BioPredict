@@ -18,10 +18,12 @@ from sklearn.preprocessing import StandardScaler
 from prepare_dataset import MODEL_FEATURES
 
 
-def read_split(path):
+def read_split(path, extended=False):
     with Path(path).open(encoding='utf-8', newline='') as handle:
         reader = csv.DictReader(handle)
         required = set(MODEL_FEATURES + ['gene', 'transcript', 'variant', 'label', 'validation_status'])
+        if extended:
+            required.update(['ref', 'alt'])
         if not required <= set(reader.fieldnames or []):
             raise ValueError('Missing split columns')
         rows = list(reader)
@@ -29,7 +31,11 @@ def read_split(path):
         raise ValueError('Empty split')
     x, y, keys = [], [], set()
     for row in rows:
-        values = [float(row[f]) for f in MODEL_FEATURES]
+        if extended:
+            from extended_features import extended_values
+            values = extended_values(row)
+        else:
+            values = [float(row[f]) for f in MODEL_FEATURES]
         key = tuple(row[f] for f in ('gene', 'transcript', 'variant'))
         if (row['validation_status'] != 'valid' or row['label'] not in ('0', '1') or
                 not all(key) or not all(math.isfinite(v) for v in values) or key in keys):

@@ -1,0 +1,37 @@
+{
+  "configuration_version": 1,
+  "frozen_on": "2026-10-13",
+  "features": [
+    "relative_position",
+    "hydrophobicity_change",
+    "weight_change",
+    "absolute_hydrophobicity_change",
+    "absolute_weight_change",
+    "blosum62_score",
+    "ortholog_ref_agreement",
+    "ortholog_alt_agreement"
+  ],
+  "scaler": "StandardScaler fitted on training rows only",
+  "estimator": {
+    "type": "LogisticRegression",
+    "C": 1.0,
+    "solver": "lbfgs",
+    "max_iter": 1000
+  },
+  "threshold_label_1": 0.5,
+  "conservation": {
+    "server": "oct2024",
+    "orthology_type": "ortholog_one2one",
+    "species": ["bos_taurus", "canis_lupus_familiaris", "danio_rerio", "gallus_gallus", "mus_musculus"],
+    "minimum_observations": 3,
+    "require_exact_mane_protein": true,
+    "eligible_status": "available",
+    "missing_values": "exclude and report coverage; never replace with zero"
+  },
+  "training_cohort_sha256": "5739b08d61e4980758986a6f110db817887b9acf57771c970723bdc4990c6f82",
+  "training_rows": 679,
+  "review_filter": "No additional review-status exclusion; sensitivity analysis did not replace primary cohort",
+  "evaluation": "Use the existing gene-disjoint test split, report eligible-row and class coverage, compare six and eight features on identical eligible test rows. Fit both models on the same 679 training rows. No test-based tuning.",
+  "prior_test_use": "The three-feature baseline was already evaluated on this split. The eight-feature configuration was selected using training-only cross-validation; this is not a new independent dataset.",
+  "scope": "Research prototype; uncalibrated scores are not clinical risk estimates"
+}

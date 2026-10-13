@@ -96,6 +96,16 @@ full fold gene lists, OOF predictions and per-gene tables remain under ignored
 The earlier milestone and demonstration details remain in `docs/milestone.md`.
 Source data, caches and trained models are retained locally, not pushed to GitHub.
 
+## Web application progress
+
+A local research-only interface is available through `python web_app.py` on
+127.0.0.1:8000. It wraps the existing eight-feature predictor, validates inputs,
+handles requests asynchronously with a single-job limit, and displays coverage/
+refusal messages and an uncalibrated model score. It does not load the context
+model, retrain, tune, upload user results or publish a site. Same-origin/Host
+checks and strict routes prevent serving arbitrary local files. Public deployment
+and clinical-risk claims remain out of scope until independent validation.
+
 ## Next development
 
 1. Reserve a genuinely new validation cohort before further selection; audit gene

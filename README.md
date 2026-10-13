@@ -23,6 +23,16 @@ BioPredict is a Python-based bioinformatics toolkit that retrieves and analyzes 
 
 🚧 In development
 
+### Local research web prototype
+
+Run `python web_app.py` from the BioPredict folder, then open
+`http://127.0.0.1:8000` in a browser. The interface uses the trusted local frozen
+eight-feature model and matching Python environment, displays uncalibrated scores,
+and handles missing coverage and network failures. It binds only to loopback and
+allows one prediction job at a time; it is not a public deployment. No retraining,
+threshold tuning, context-model substitution or test evaluation occurs. Stop it
+with Ctrl+C. This is a prototype pending independent scientific validation.
+
 See [PROJECT_STATUS.md](PROJECT_STATUS.md) for the current scientific decisions,
 leakage correction, model comparison uncertainty and held-out-data lifecycle.
 The eight-feature model remains the baseline; the context model is experimental.

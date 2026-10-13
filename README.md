@@ -233,6 +233,20 @@ eight-feature pipeline, prediction table, coverage breakdown and metrics. The
 configuration is not tuned using test results. Performance excludes unavailable
 test rows and does not establish calibrated clinical risk.
 
+## Research prediction command
+
+Run `python predict_variant.py TP53 R175H` with a gene and one-letter substitution.
+The example is not hard-coded; any qualifying human MANE gene can be supplied.
+The separate command preserves `app.py`, validates the reference amino acid,
+requires exact archived alignment coverage from at least three species, and uses
+the saved eight-feature pipeline with its training scaler and fixed threshold.
+It refuses to predict when coverage is missing and checks the training library
+version before using the model. Network failures remain possible; caches are reused.
+Load only the trusted local model created by this project. Output is a research
+classification and uncalibrated score, not disease risk or a clinical decision.
+A demonstration variant may have appeared in development data and therefore
+does not provide new evidence of generalization.
+
 ## Author
 
 Cherryl Soputan

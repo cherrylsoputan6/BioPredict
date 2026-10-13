@@ -1,8 +1,24 @@
 import unittest
-from predict_variant import parse_missense, feature_vector
+from unittest.mock import Mock, patch
+import sklearn
+from predict_variant import parse_missense, feature_vector, predict, FEATURES
 
 
 class PredictionTests(unittest.TestCase):
+    def test_prediction_refuses_before_model_scoring(self):
+        pipeline = Mock()
+        artifact = dict(features=FEATURES, sklearn_version=sklearn.__version__,
+                        configuration=dict(features=FEATURES, threshold_label_1=0.5,
+                                           conservation=dict(server='oct2024')), pipeline=pipeline)
+        cache = Mock()
+        cache.mane = {}
+        cache.get.return_value = 'MA'
+        with patch('predict_variant.joblib.load', return_value=artifact), patch('predict_variant.find_mane_transcript', return_value='NM_123.1'), patch('predict_variant.SequenceCache', return_value=cache), patch('predict_variant.fetch_homology') as fetch:
+            with self.assertRaisesRegex(ValueError, 'Reference residue'):
+                predict('EXAMPLE', 'R2H', 'unused.joblib', 'cache', 'orthologs')
+            fetch.assert_not_called()
+            pipeline.predict_proba.assert_not_called()
+
     def test_reject_unsupported_variants(self):
         self.assertEqual(parse_missense(' r2h ')['position'], 2)
         for text in ('M1I', 'R2R', 'R0H', 'R2*', 'R2Hfs', ''):

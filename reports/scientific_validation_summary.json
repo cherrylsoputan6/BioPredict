@@ -1,0 +1,950 @@
+{
+  "training_rows": 679,
+  "gene_symbols": 671,
+  "biological_groups": 670,
+  "grouping": "Connected components sharing a symbol, NCBI GeneID or exact protein sequence",
+  "source_sha256": "5739b08d61e4980758986a6f110db817887b9acf57771c970723bdc4990c6f82",
+  "sklearn_version": "1.9.1",
+  "seeds": [
+    42,
+    17,
+    123
+  ],
+  "folds": [
+    {
+      "seed": 42,
+      "fold": 1,
+      "train_rows": 544,
+      "validation_rows": 135,
+      "gene_overlap": 0,
+      "identical_protein_overlap": 0,
+      "baseline": {
+        "accuracy": 0.8666666666666667,
+        "balanced_accuracy": 0.862455985915493,
+        "precision_label_1": 0.8271604938271605,
+        "recall_label_1": 0.9436619718309859,
+        "f1_label_1": 0.881578947368421,
+        "roc_auc": 0.9091109154929577,
+        "confusion_matrix": [
+          [
+            50,
+            14
+          ],
+          [
+            4,
+            67
+          ]
+        ],
+        "brier": 0.11452751390041738
+      },
+      "context": {
+        "accuracy": 0.8592592592592593,
+        "balanced_accuracy": 0.8538732394366197,
+        "precision_label_1": 0.8095238095238095,
+        "recall_label_1": 0.9577464788732394,
+        "f1_label_1": 0.8774193548387097,
+        "roc_auc": 0.9223151408450705,
+        "confusion_matrix": [
+          [
+            48,
+            16
+          ],
+          [
+            3,
+            68
+          ]
+        ],
+        "brier": 0.10798666504482178
+      },
+      "paired_delta": {
+        "accuracy": -0.007407407407407418,
+        "balanced_accuracy": -0.008582746478873249,
+        "roc_auc": 0.013204225352112742,
+        "brier": -0.006540848855595596
+      }
+    },
+    {
+      "seed": 42,
+      "fold": 2,
+      "train_rows": 542,
+      "validation_rows": 137,
+      "gene_overlap": 0,
+      "identical_protein_overlap": 0,
+      "baseline": {
+        "accuracy": 0.7956204379562044,
+        "balanced_accuracy": 0.7870291095890412,
+        "precision_label_1": 0.7528089887640449,
+        "recall_label_1": 0.9178082191780822,
+        "f1_label_1": 0.8271604938271605,
+        "roc_auc": 0.8705051369863013,
+        "confusion_matrix": [
+          [
+            42,
+            22
+          ],
+          [
+            6,
+            67
+          ]
+        ],
+        "brier": 0.1354003999921596
+      },
+      "context": {
+        "accuracy": 0.8321167883211679,
+        "balanced_accuracy": 0.8251284246575342,
+        "precision_label_1": 0.7906976744186046,
+        "recall_label_1": 0.9315068493150684,
+        "f1_label_1": 0.8553459119496856,
+        "roc_auc": 0.8824914383561643,
+        "confusion_matrix": [
+          [
+            46,
+            18
+          ],
+          [
+            5,
+            68
+          ]
+        ],
+        "brier": 0.12709515981964437
+      },
+      "paired_delta": {
+        "accuracy": 0.03649635036496346,
+        "balanced_accuracy": 0.03809931506849307,
+        "roc_auc": 0.011986301369863006,
+        "brier": -0.008305240172515244
+      }
+    },
+    {
+      "seed": 42,
+      "fold": 3,
+      "train_rows": 543,
+      "validation_rows": 136,
+      "gene_overlap": 0,
+      "identical_protein_overlap": 0,
+      "baseline": {
+        "accuracy": 0.8455882352941176,
+        "balanced_accuracy": 0.8402777777777778,
+        "precision_label_1": 0.8072289156626506,
+        "recall_label_1": 0.9305555555555556,
+        "f1_label_1": 0.864516129032258,
+        "roc_auc": 0.8821614583333334,
+        "confusion_matrix": [
+          [
+            48,
+            16
+          ],
+          [
+            5,
+            67
+          ]
+        ],
+        "brier": 0.1237157443816051
+      },
+      "context": {
+        "accuracy": 0.8602941176470589,
+        "balanced_accuracy": 0.8541666666666667,
+        "precision_label_1": 0.8117647058823529,
+        "recall_label_1": 0.9583333333333334,
+        "f1_label_1": 0.8789808917197452,
+        "roc_auc": 0.90234375,
+        "confusion_matrix": [
+          [
+            48,
+            16
+          ],
+          [
+            3,
+            69
+          ]
+        ],
+        "brier": 0.12061506110119306
+      },
+      "paired_delta": {
+        "accuracy": 0.014705882352941235,
+        "balanced_accuracy": 0.01388888888888895,
+        "roc_auc": 0.02018229166666663,
+        "brier": -0.0031006832804120338
+      }
+    },
+    {
+      "seed": 42,
+      "fold": 4,
+      "train_rows": 544,
+      "validation_rows": 135,
+      "gene_overlap": 0,
+      "identical_protein_overlap": 0,
+      "baseline": {
+        "accuracy": 0.8148148148148148,
+        "balanced_accuracy": 0.807768485915493,
+        "precision_label_1": 0.7613636363636364,
+        "recall_label_1": 0.9436619718309859,
+        "f1_label_1": 0.8427672955974843,
+        "roc_auc": 0.903169014084507,
+        "confusion_matrix": [
+          [
+            43,
+            21
+          ],
+          [
+            4,
+            67
+          ]
+        ],
+        "brier": 0.12320982581648723
+      },
+      "context": {
+        "accuracy": 0.8074074074074075,
+        "balanced_accuracy": 0.8022667253521127,
+        "precision_label_1": 0.7710843373493976,
+        "recall_label_1": 0.9014084507042254,
+        "f1_label_1": 0.8311688311688312,
+        "roc_auc": 0.9128521126760564,
+        "confusion_matrix": [
+          [
+            45,
+            19
+          ],
+          [
+            7,
+            64
+          ]
+        ],
+        "brier": 0.11720809774018792
+      },
+      "paired_delta": {
+        "accuracy": -0.007407407407407307,
+        "balanced_accuracy": -0.0055017605633802535,
+        "roc_auc": 0.009683098591549366,
+        "brier": -0.006001728076299312
+      }
+    },
+    {
+      "seed": 42,
+      "fold": 5,
+      "train_rows": 543,
+      "validation_rows": 136,
+      "gene_overlap": 0,
+      "identical_protein_overlap": 0,
+      "baseline": {
+        "accuracy": 0.8014705882352942,
+        "balanced_accuracy": 0.7942708333333333,
+        "precision_label_1": 0.7586206896551724,
+        "recall_label_1": 0.9166666666666666,
+        "f1_label_1": 0.8301886792452831,
+        "roc_auc": 0.8556857638888888,
+        "confusion_matrix": [
+          [
+            43,
+            21
+          ],
+          [
+            6,
+            66
+          ]
+        ],
+        "brier": 0.14155150552301068
+      },
+      "context": {
+        "accuracy": 0.8088235294117647,
+        "balanced_accuracy": 0.8020833333333333,
+        "precision_label_1": 0.7674418604651163,
+        "recall_label_1": 0.9166666666666666,
+        "f1_label_1": 0.8354430379746836,
+        "roc_auc": 0.8763020833333333,
+        "confusion_matrix": [
+          [
+            44,
+            20
+          ],
+          [
+            6,
+            66
+          ]
+        ],
+        "brier": 0.1313482601086808
+      },
+      "paired_delta": {
+        "accuracy": 0.007352941176470562,
+        "balanced_accuracy": 0.0078125,
+        "roc_auc": 0.02061631944444442,
+        "brier": -0.010203245414329876
+      }
+    },
+    {
+      "seed": 17,
+      "fold": 1,
+      "train_rows": 542,
+      "validation_rows": 137,
+      "gene_overlap": 0,
+      "identical_protein_overlap": 0,
+      "baseline": {
+        "accuracy": 0.8175182481751825,
+        "balanced_accuracy": 0.8075770547945205,
+        "precision_label_1": 0.7608695652173914,
+        "recall_label_1": 0.958904109589041,
+        "f1_label_1": 0.8484848484848485,
+        "roc_auc": 0.8961900684931506,
+        "confusion_matrix": [
+          [
+            42,
+            22
+          ],
+          [
+            3,
+            70
+          ]
+        ],
+        "brier": 0.1305261556292749
+      },
+      "context": {
+        "accuracy": 0.8102189781021898,
+        "balanced_accuracy": 0.8007277397260274,
+        "precision_label_1": 0.7582417582417582,
+        "recall_label_1": 0.9452054794520548,
+        "f1_label_1": 0.8414634146341463,
+        "roc_auc": 0.9107448630136986,
+        "confusion_matrix": [
+          [
+            42,
+            22
+          ],
+          [
+            4,
+            69
+          ]
+        ],
+        "brier": 0.1237628172698569
+      },
+      "paired_delta": {
+        "accuracy": -0.007299270072992692,
+        "balanced_accuracy": -0.006849315068493067,
+        "roc_auc": 0.014554794520547976,
+        "brier": -0.006763338359417989
+      }
+    },
+    {
+      "seed": 17,
+      "fold": 2,
+      "train_rows": 544,
+      "validation_rows": 135,
+      "gene_overlap": 0,
+      "identical_protein_overlap": 0,
+      "baseline": {
+        "accuracy": 0.8444444444444444,
+        "balanced_accuracy": 0.8405589788732395,
+        "precision_label_1": 0.8125,
+        "recall_label_1": 0.9154929577464789,
+        "f1_label_1": 0.8609271523178808,
+        "roc_auc": 0.9278169014084507,
+        "confusion_matrix": [
+          [
+            49,
+            15
+          ],
+          [
+            6,
+            65
+          ]
+        ],
+        "brier": 0.11059764109546087
+      },
+      "context": {
+        "accuracy": 0.8518518518518519,
+        "balanced_accuracy": 0.8476012323943662,
+        "precision_label_1": 0.8148148148148148,
+        "recall_label_1": 0.9295774647887324,
+        "f1_label_1": 0.868421052631579,
+        "roc_auc": 0.9225352112676056,
+        "confusion_matrix": [
+          [
+            49,
+            15
+          ],
+          [
+            5,
+            66
+          ]
+        ],
+        "brier": 0.1063768762950814
+      },
+      "paired_delta": {
+        "accuracy": 0.007407407407407418,
+        "balanced_accuracy": 0.007042253521126751,
+        "roc_auc": -0.005281690140845119,
+        "brier": -0.004220764800379473
+      }
+    },
+    {
+      "seed": 17,
+      "fold": 3,
+      "train_rows": 544,
+      "validation_rows": 135,
+      "gene_overlap": 0,
+      "identical_protein_overlap": 0,
+      "baseline": {
+        "accuracy": 0.7703703703703704,
+        "balanced_accuracy": 0.7670554577464789,
+        "precision_label_1": 0.7564102564102564,
+        "recall_label_1": 0.8309859154929577,
+        "f1_label_1": 0.7919463087248322,
+        "roc_auc": 0.8309859154929577,
+        "confusion_matrix": [
+          [
+            45,
+            19
+          ],
+          [
+            12,
+            59
+          ]
+        ],
+        "brier": 0.16270488347141437
+      },
+      "context": {
+        "accuracy": 0.8148148148148148,
+        "balanced_accuracy": 0.8116197183098591,
+        "precision_label_1": 0.7948717948717948,
+        "recall_label_1": 0.8732394366197183,
+        "f1_label_1": 0.8322147651006712,
+        "roc_auc": 0.8727992957746479,
+        "confusion_matrix": [
+          [
+            48,
+            16
+          ],
+          [
+            9,
+            62
+          ]
+        ],
+        "brier": 0.1453024759882182
+      },
+      "paired_delta": {
+        "accuracy": 0.0444444444444444,
+        "balanced_accuracy": 0.044564260563380254,
+        "roc_auc": 0.04181338028169013,
+        "brier": -0.017402407483196186
+      }
+    },
+    {
+      "seed": 17,
+      "fold": 4,
+      "train_rows": 543,
+      "validation_rows": 136,
+      "gene_overlap": 0,
+      "identical_protein_overlap": 0,
+      "baseline": {
+        "accuracy": 0.7941176470588235,
+        "balanced_accuracy": 0.7847222222222222,
+        "precision_label_1": 0.7391304347826086,
+        "recall_label_1": 0.9444444444444444,
+        "f1_label_1": 0.8292682926829268,
+        "roc_auc": 0.8821614583333333,
+        "confusion_matrix": [
+          [
+            40,
+            24
+          ],
+          [
+            4,
+            68
+          ]
+        ],
+        "brier": 0.132899277252039
+      },
+      "context": {
+        "accuracy": 0.8088235294117647,
+        "balanced_accuracy": 0.8012152777777778,
+        "precision_label_1": 0.7613636363636364,
+        "recall_label_1": 0.9305555555555556,
+        "f1_label_1": 0.8375,
+        "roc_auc": 0.8930121527777778,
+        "confusion_matrix": [
+          [
+            43,
+            21
+          ],
+          [
+            5,
+            67
+          ]
+        ],
+        "brier": 0.13040931959813834
+      },
+      "paired_delta": {
+        "accuracy": 0.014705882352941235,
+        "balanced_accuracy": 0.01649305555555558,
+        "roc_auc": 0.01085069444444453,
+        "brier": -0.0024899576539006707
+      }
+    },
+    {
+      "seed": 17,
+      "fold": 5,
+      "train_rows": 543,
+      "validation_rows": 136,
+      "gene_overlap": 0,
+      "identical_protein_overlap": 0,
+      "baseline": {
+        "accuracy": 0.8897058823529411,
+        "balanced_accuracy": 0.8836805555555556,
+        "precision_label_1": 0.8352941176470589,
+        "recall_label_1": 0.9861111111111112,
+        "f1_label_1": 0.9044585987261147,
+        "roc_auc": 0.8895399305555556,
+        "confusion_matrix": [
+          [
+            50,
+            14
+          ],
+          [
+            1,
+            71
+          ]
+        ],
+        "brier": 0.11273343633896615
+      },
+      "context": {
+        "accuracy": 0.8602941176470589,
+        "balanced_accuracy": 0.8541666666666667,
+        "precision_label_1": 0.8117647058823529,
+        "recall_label_1": 0.9583333333333334,
+        "f1_label_1": 0.8789808917197452,
+        "roc_auc": 0.898654513888889,
+        "confusion_matrix": [
+          [
+            48,
+            16
+          ],
+          [
+            3,
+            69
+          ]
+        ],
+        "brier": 0.11070033695908568
+      },
+      "paired_delta": {
+        "accuracy": -0.02941176470588225,
+        "balanced_accuracy": -0.02951388888888884,
+        "roc_auc": 0.00911458333333337,
+        "brier": -0.002033099379880471
+      }
+    },
+    {
+      "seed": 123,
+      "fold": 1,
+      "train_rows": 544,
+      "validation_rows": 135,
+      "gene_overlap": 0,
+      "identical_protein_overlap": 0,
+      "baseline": {
+        "accuracy": 0.8222222222222222,
+        "balanced_accuracy": 0.8148107394366197,
+        "precision_label_1": 0.7640449438202247,
+        "recall_label_1": 0.9577464788732394,
+        "f1_label_1": 0.85,
+        "roc_auc": 0.8952464788732394,
+        "confusion_matrix": [
+          [
+            43,
+            21
+          ],
+          [
+            3,
+            68
+          ]
+        ],
+        "brier": 0.12268647160332215
+      },
+      "context": {
+        "accuracy": 0.837037037037037,
+        "balanced_accuracy": 0.8304357394366197,
+        "precision_label_1": 0.7816091954022989,
+        "recall_label_1": 0.9577464788732394,
+        "f1_label_1": 0.8607594936708861,
+        "roc_auc": 0.9141725352112676,
+        "confusion_matrix": [
+          [
+            45,
+            19
+          ],
+          [
+            3,
+            68
+          ]
+        ],
+        "brier": 0.11657267485598637
+      },
+      "paired_delta": {
+        "accuracy": 0.014814814814814836,
+        "balanced_accuracy": 0.015625,
+        "roc_auc": 0.01892605633802824,
+        "brier": -0.006113796747335781
+      }
+    },
+    {
+      "seed": 123,
+      "fold": 2,
+      "train_rows": 542,
+      "validation_rows": 137,
+      "gene_overlap": 0,
+      "identical_protein_overlap": 0,
+      "baseline": {
+        "accuracy": 0.781021897810219,
+        "balanced_accuracy": 0.7742936643835616,
+        "precision_label_1": 0.7529411764705882,
+        "recall_label_1": 0.8767123287671232,
+        "f1_label_1": 0.810126582278481,
+        "roc_auc": 0.8463184931506849,
+        "confusion_matrix": [
+          [
+            43,
+            21
+          ],
+          [
+            9,
+            64
+          ]
+        ],
+        "brier": 0.16199002997180517
+      },
+      "context": {
+        "accuracy": 0.7883211678832117,
+        "balanced_accuracy": 0.7830693493150684,
+        "precision_label_1": 0.7682926829268293,
+        "recall_label_1": 0.863013698630137,
+        "f1_label_1": 0.8129032258064516,
+        "roc_auc": 0.825984589041096,
+        "confusion_matrix": [
+          [
+            45,
+            19
+          ],
+          [
+            10,
+            63
+          ]
+        ],
+        "brier": 0.1703782820545414
+      },
+      "paired_delta": {
+        "accuracy": 0.007299270072992692,
+        "balanced_accuracy": 0.008775684931506822,
+        "roc_auc": -0.020333904109588907,
+        "brier": 0.00838825208273622
+      }
+    },
+    {
+      "seed": 123,
+      "fold": 3,
+      "train_rows": 544,
+      "validation_rows": 135,
+      "gene_overlap": 0,
+      "identical_protein_overlap": 0,
+      "baseline": {
+        "accuracy": 0.8148148148148148,
+        "balanced_accuracy": 0.8085387323943662,
+        "precision_label_1": 0.7674418604651163,
+        "recall_label_1": 0.9295774647887324,
+        "f1_label_1": 0.8407643312101911,
+        "roc_auc": 0.839568661971831,
+        "confusion_matrix": [
+          [
+            44,
+            20
+          ],
+          [
+            5,
+            66
+          ]
+        ],
+        "brier": 0.14845256086969297
+      },
+      "context": {
+        "accuracy": 0.8074074074074075,
+        "balanced_accuracy": 0.8022667253521127,
+        "precision_label_1": 0.7710843373493976,
+        "recall_label_1": 0.9014084507042254,
+        "f1_label_1": 0.8311688311688312,
+        "roc_auc": 0.8805017605633803,
+        "confusion_matrix": [
+          [
+            45,
+            19
+          ],
+          [
+            7,
+            64
+          ]
+        ],
+        "brier": 0.13472020764291553
+      },
+      "paired_delta": {
+        "accuracy": -0.007407407407407307,
+        "balanced_accuracy": -0.006272007042253502,
+        "roc_auc": 0.040933098591549255,
+        "brier": -0.013732353226777433
+      }
+    },
+    {
+      "seed": 123,
+      "fold": 4,
+      "train_rows": 543,
+      "validation_rows": 136,
+      "gene_overlap": 0,
+      "identical_protein_overlap": 0,
+      "baseline": {
+        "accuracy": 0.8529411764705882,
+        "balanced_accuracy": 0.8489583333333333,
+        "precision_label_1": 0.825,
+        "recall_label_1": 0.9166666666666666,
+        "f1_label_1": 0.868421052631579,
+        "roc_auc": 0.9203559027777778,
+        "confusion_matrix": [
+          [
+            50,
+            14
+          ],
+          [
+            6,
+            66
+          ]
+        ],
+        "brier": 0.10621677730814515
+      },
+      "context": {
+        "accuracy": 0.875,
+        "balanced_accuracy": 0.8706597222222222,
+        "precision_label_1": 0.8395061728395061,
+        "recall_label_1": 0.9444444444444444,
+        "f1_label_1": 0.8888888888888888,
+        "roc_auc": 0.9368489583333334,
+        "confusion_matrix": [
+          [
+            51,
+            13
+          ],
+          [
+            4,
+            68
+          ]
+        ],
+        "brier": 0.09483309651750026
+      },
+      "paired_delta": {
+        "accuracy": 0.022058823529411797,
+        "balanced_accuracy": 0.02170138888888895,
+        "roc_auc": 0.01649305555555558,
+        "brier": -0.01138368079064489
+      }
+    },
+    {
+      "seed": 123,
+      "fold": 5,
+      "train_rows": 543,
+      "validation_rows": 136,
+      "gene_overlap": 0,
+      "identical_protein_overlap": 0,
+      "baseline": {
+        "accuracy": 0.8529411764705882,
+        "balanced_accuracy": 0.8454861111111112,
+        "precision_label_1": 0.7954545454545454,
+        "recall_label_1": 0.9722222222222222,
+        "f1_label_1": 0.875,
+        "roc_auc": 0.9246961805555556,
+        "confusion_matrix": [
+          [
+            46,
+            18
+          ],
+          [
+            2,
+            70
+          ]
+        ],
+        "brier": 0.10651484355390062
+      },
+      "context": {
+        "accuracy": 0.8529411764705882,
+        "balanced_accuracy": 0.8463541666666667,
+        "precision_label_1": 0.8023255813953488,
+        "recall_label_1": 0.9583333333333334,
+        "f1_label_1": 0.8734177215189873,
+        "roc_auc": 0.9305555555555556,
+        "confusion_matrix": [
+          [
+            47,
+            17
+          ],
+          [
+            3,
+            69
+          ]
+        ],
+        "brier": 0.102092852486541
+      },
+      "paired_delta": {
+        "accuracy": 0.0,
+        "balanced_accuracy": 0.0008680555555555802,
+        "roc_auc": 0.005859375,
+        "brier": -0.004421991067359618
+      }
+    }
+  ],
+  "identical_sequence_groups": {
+    "879aa50132666508149330a1cf115be3a755be27c800357e6017b5d6a3b7d72b": [
+      "IFT54",
+      "TRAF3IP1"
+    ]
+  },
+  "paired_uncertainty": {
+    "accuracy": {
+      "context_minus_baseline": 0.008836524300441906,
+      "conditional_95_percentile_interval": [
+        -0.0073209125687517165,
+        0.024964207048458222
+      ],
+      "bootstrap_draws": 2000
+    },
+    "balanced_accuracy": {
+      "context_minus_baseline": 0.00920525766016711,
+      "conditional_95_percentile_interval": [
+        -0.007017462512257389,
+        0.025327574135175175
+      ],
+      "bootstrap_draws": 2000
+    },
+    "roc_auc": {
+      "context_minus_baseline": 0.015094011142061214,
+      "conditional_95_percentile_interval": [
+        0.003416831568741155,
+        0.027347701601524412
+      ],
+      "bootstrap_draws": 2000
+    },
+    "brier": {
+      "context_minus_baseline": -0.006834168029345028,
+      "conditional_95_percentile_interval": [
+        -0.01253444035601509,
+        -0.001198777662066719
+      ],
+      "bootstrap_draws": 2000
+    }
+  },
+  "calibration": {
+    "brier": 0.12771832348709236,
+    "bins": [
+      {
+        "lower": 0.0,
+        "upper": 0.2,
+        "rows": 191,
+        "mean_score": 0.033252858536700264,
+        "observed_label_1_fraction": 0.03664921465968586
+      },
+      {
+        "lower": 0.2,
+        "upper": 0.4,
+        "rows": 36,
+        "mean_score": 0.316210299556667,
+        "observed_label_1_fraction": 0.25
+      },
+      {
+        "lower": 0.4,
+        "upper": 0.6,
+        "rows": 51,
+        "mean_score": 0.5017015291960426,
+        "observed_label_1_fraction": 0.45098039215686275
+      },
+      {
+        "lower": 0.6,
+        "upper": 0.8,
+        "rows": 209,
+        "mean_score": 0.7112354933838171,
+        "observed_label_1_fraction": 0.722488038277512
+      },
+      {
+        "lower": 0.8,
+        "upper": 1.0,
+        "rows": 192,
+        "mean_score": 0.8718693709836035,
+        "observed_label_1_fraction": 0.8802083333333334
+      }
+    ]
+  },
+  "shuffled_label_negative_control": {
+    "accuracy": 0.5154639175257731,
+    "balanced_accuracy": 0.505288126740947,
+    "precision_label_1": 0.532608695652174,
+    "recall_label_1": 0.6824512534818942,
+    "f1_label_1": 0.5982905982905983,
+    "roc_auc": 0.5188283426183844,
+    "confusion_matrix": [
+      [
+        105,
+        215
+      ],
+      [
+        114,
+        245
+      ]
+    ]
+  },
+  "performance_by_review_status": [
+    {
+      "group": "criteria provided, multiple submitters, no conflicts",
+      "rows": 146,
+      "benign": 75,
+      "pathogenic": 71,
+      "false_positive": 37,
+      "false_negative": 3,
+      "accuracy": 0.726027397260274,
+      "note": "Descriptive subgroup"
+    },
+    {
+      "group": "criteria provided, single submitter",
+      "rows": 386,
+      "benign": 234,
+      "pathogenic": 152,
+      "false_positive": 48,
+      "false_negative": 7,
+      "accuracy": 0.8575129533678757,
+      "note": "Descriptive subgroup"
+    },
+    {
+      "group": "no assertion criteria provided",
+      "rows": 146,
+      "benign": 11,
+      "pathogenic": 135,
+      "false_positive": 9,
+      "false_negative": 15,
+      "accuracy": 0.8356164383561644,
+      "note": "Descriptive subgroup"
+    },
+    {
+      "group": "reviewed by expert panel",
+      "rows": 1,
+      "benign": 0,
+      "pathogenic": 1,
+      "false_positive": 0,
+      "false_negative": 0,
+      "accuracy": 1.0,
+      "note": "Too few rows/classes for reliable gene-level AUC"
+    }
+  ],
+  "gene_rows_distribution": {
+    "1": 661,
+    "2": 9
+  },
+  "limitations": [
+    "Existing test split has already been evaluated; no test rows loaded by this audit.",
+    "Three repeated five-fold runs are dependent, not 15 independent experiments.",
+    "Gene bootstrap intervals condition on fixed seed-42 OOF predictions; they omit refitting uncertainty and prior adaptive feature selection.",
+    "Most genes have one variant; gene-level scores are not stable generalization estimates.",
+    "Gene separation does not establish protein-family, ancestry, temporal, or clinical-population independence.",
+    "Labels are ClinVar aggregates across conditions; review status does not establish label correctness.",
+    "Balanced gene-diverse sampling, review imbalance and ortholog missingness limit calibration and deployment transfer.",
+    "One shuffled-label run is a diagnostic, not proof that leakage is absent."
+  ],
+  "decision": "Retain eight-feature baseline; context remains experimental. Independent reserved cohort required before final selection."
+}

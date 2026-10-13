@@ -12,7 +12,7 @@ from train_model import read_split, fit_baseline, metrics
 from prepare_dataset import MODEL_FEATURES
 
 
-def cross_validate(source, output, folds=5, seed=42, extended=False, feature_subset=None, conservation=False):
+def cross_validate(source, output, folds=5, seed=42, extended=False, feature_subset=None, conservation=False, context=False):
     source, output = Path(source), Path(output)
     if output.exists():
         raise ValueError('Output already exists; choose a new filename')
@@ -31,6 +31,11 @@ def cross_validate(source, output, folds=5, seed=42, extended=False, feature_sub
             if not all(np.isfinite(v) and 0 <= v <= 1 for v in extras):
                 raise ValueError('Invalid ortholog agreement fractions')
             values.extend(extras)
+    if context:
+        from sequence_context import CONTEXT_FEATURES, row_context
+        feature_names = list(feature_names) + CONTEXT_FEATURES
+        for row, values in zip(rows, x):
+            values.extend(row_context(row))
     if feature_subset is not None:
         if not feature_subset or len(set(feature_subset)) != len(feature_subset) or not set(feature_subset) <= set(feature_names):
             raise ValueError('Feature subset must contain unique allowed feature names')
@@ -99,9 +104,12 @@ def main():
     parser.add_argument('--folds', type=int, default=5)
     parser.add_argument('--seed', type=int, default=42)
     parser.add_argument('--extended', action='store_true', help='Add absolute changes and BLOSUM62 score')
+    parser.add_argument('--conservation', action='store_true', help='Use available ortholog agreement columns')
+    parser.add_argument('--context', action='store_true', help='Add fixed five-residue local context from cached MANE protein')
     args = parser.parse_args()
     try:
-        report = cross_validate(args.training_csv, args.output_json, args.folds, args.seed, args.extended)
+        report = cross_validate(args.training_csv, args.output_json, args.folds, args.seed, args.extended,
+                                conservation=args.conservation, context=args.context)
         print(json.dumps(report['aggregate'], indent=2))
     except ValueError as error:
         parser.error(str(error))

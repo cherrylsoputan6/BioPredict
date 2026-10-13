@@ -23,6 +23,19 @@ BioPredict is a Python-based bioinformatics toolkit that retrieves and analyzes 
 
 🚧 In development
 
+See [PROJECT_STATUS.md](PROJECT_STATUS.md) for the current scientific decisions,
+leakage correction, model comparison uncertainty and held-out-data lifecycle.
+The eight-feature model remains the baseline; the context model is experimental.
+Earlier symbol-only CV admitted an IFT54/TRAF3IP1 alias across folds. Corrected
+validation groups stable NCBI GeneIDs and identical proteins as well as symbols.
+Run `python scientific_validation.py data/conservation_comparison/matched_training.csv data/scientific_validation_new`
+for three paired five-fold training-only runs, subgroup/calibration diagnostics,
+conditional gene-bootstrap intervals and a shuffled-label control. The existing
+test split was previously evaluated and is not a pristine final holdout.
+Calibration interpretation follows
+[scikit-learn's guidance](https://scikit-learn.org/stable/modules/calibration.html):
+Brier loss reflects discrimination and calibration together.
+
 ## ClinVar dataset candidates
 
 The existing interactive pipeline runs with `python app.py`. Install its
@@ -234,6 +247,29 @@ configuration is not tuned using test results. Performance excludes unavailable
 test rows and does not establish calibrated clinical risk.
 
 ## Research prediction command
+
+Local context can be explored on the matched training cohort with
+`python cross_validate_model.py data/conservation_comparison/matched_training.csv data/context_cv.json --extended --conservation --context`.
+This uses five neighboring residues on each side, excluding the changed site;
+terminal windows contain fewer residues. Mean hydrophobicity, glycine/proline
+fraction and Shannon residue entropy are sequence descriptors, not measured
+structure or solvent exposure. All sequences are read from the validated MANE
+cache. This exploratory CV does not replace the frozen prediction model.
+
+Training-only diagnostics can be reproduced with
+`python training_diagnostics.py data/conservation_comparison/matched_training.csv data/training_diagnostics`.
+This holds out each gene once, records false positives/negatives and review-status
+counts, and compares Brier score with a fold-training prevalence baseline.
+Five fixed score bins compare mean scores with observed label frequencies.
+This does not fit a calibrator, tune the threshold or change the saved model.
+Run `python error_patterns.py data/conservation_comparison/matched_training.csv data/training_diagnostics/out_of_fold_predictions.csv data/error_patterns.json`
+to inspect class-specific error rates across predefined feature groups. These
+exploratory associations are descriptive; group denominators must be considered,
+and they are not independent evidence for choosing a new threshold or model.
+
+See [the documented milestone](docs/milestone.md) for dataset provenance,
+evaluation limitations and the successful TP53 command demonstration.
+Run `python demo_checks.py` to replay cached benign examples and refusal checks.
 
 Run `python predict_variant.py TP53 R175H` with a gene and one-letter substitution.
 The example is not hard-coded; any qualifying human MANE gene can be supplied.

@@ -4,6 +4,16 @@
 
 ### Public research application readiness (2026-10-16)
 
+Deployment update (2026-10-17): Render sign-in and repository connection are now
+confirmed. The new-service form is configured with the $0/month plan, Python
+3.12.14, pinned deployment requirements, one Gunicorn worker, `/health`, and
+manual deployments. Submitting creation opened Render's Add Card prompt, which
+states a temporary $1 USD authorization. No billing information was entered and
+no paid plan was selected. Public deployment and HTTPS verification remain
+blocked until the owner handles that verification (or chooses another host).
+No public service URL or successful deployment is claimed. The handoff screenshot
+is retained at `reports/render-card-verification.png`.
+
 The local app now includes amino-acid explanations, report downloads and model
 provenance. A data-only portable artifact reproduces the unchanged baseline on
 679 training examples within 1.11e-16. It does not retrain or replace the model.

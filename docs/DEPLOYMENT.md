@@ -1,5 +1,15 @@
 # Public research-demo deployment
 
+## Current deployment attempt
+
+On 2026-10-17, the authenticated Render new-service form showed the connected
+BioPredict repository. The $0/month plan, Python 3.12.14, deployment requirements,
+single-worker start command, `/health`, and auto-deploy Off were configured.
+Submitting the form triggered an Add Card verification dialog stating a temporary
+$1 USD authorization. No payment details were entered. The owner must handle
+this billing verification or choose a different host before public deployment
+can continue. No successful deployment or public URL has been verified.
+
 The repository includes a [Render Blueprint](https://render.com/docs/blueprint-spec)
 for a Python free-tier research demonstration. Hosting requires a Render account
 authorized to connect this GitHub repository; no Render credentials are available

@@ -25,6 +25,14 @@ BioPredict is a Python-based bioinformatics toolkit that retrieves and analyzes 
 
 ### Local research web prototype
 
+The improved interface explains substitutions and provides JSON and readable
+downloads with the frozen model ID/hash, transcript, archive, timestamp and
+feature values. It supports case-insensitive annotated gene matches and trims
+input whitespace. The portable public model is verified against the existing
+baseline without retraining. Independent validation is prominently marked
+incomplete. See [deployment instructions](docs/DEPLOYMENT.md) and the
+[independent-cohort protocol](docs/INDEPENDENT_EVALUATION.md).
+
 Run `python web_app.py` from the BioPredict folder, then open
 `http://127.0.0.1:8000` in a browser. The interface uses the trusted local frozen
 eight-feature model and matching Python environment, displays uncalibrated scores,

@@ -1,7 +1,8 @@
 from Bio import Entrez
 from Bio import SeqIO
+import os
 
-Entrez.email = "cherrylsoputan@gmail.com"
+Entrez.email = os.getenv('NCBI_EMAIL', 'cherrylsoputan@gmail.com')
 
 def search_gene(gene_name):
 

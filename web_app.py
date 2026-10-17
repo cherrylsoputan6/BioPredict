@@ -2,11 +2,13 @@
 import json
 import re
 import secrets
+import os
 from concurrent.futures import ThreadPoolExecutor
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from threading import Lock
 from predict_variant import parse_missense, predict
+from reporting import report_bytes
 
 ROOT = Path(__file__).resolve().parent
 
@@ -20,10 +22,12 @@ class PredictionJobs:
 
     @staticmethod
     def _predict(gene, variant):
-        return predict(gene, variant, ROOT / 'data/conservation_model/model.joblib',
+        return predict(gene, variant, ROOT / 'artifacts/baseline.json',
                        ROOT / 'data/sequence_cache', ROOT / 'data/ortholog_cache', timeout=30)
 
     def submit(self, gene, variant):
+        gene = gene.strip() if isinstance(gene, str) else gene
+        variant = variant.strip().upper() if isinstance(variant, str) else variant
         if not isinstance(gene, str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,40}', gene):
             raise ValueError('Enter a gene symbol without spaces')
         if not isinstance(variant, str) or len(variant) > 20:
@@ -56,13 +60,15 @@ class PredictionJobs:
 
 def handler(jobs):
     class Handler(BaseHTTPRequestHandler):
-        def send(self, status, body, content_type='application/json'):
+        def send(self, status, body, content_type='application/json', download=None):
             data = body if isinstance(body, bytes) else json.dumps(body).encode()
             self.send_response(status)
             self.send_header('Content-Type', content_type)
             self.send_header('Content-Length', str(len(data)))
             self.send_header('Cache-Control', 'no-store')
             self.send_header('X-Content-Type-Options', 'nosniff')
+            if download:
+                self.send_header('Content-Disposition', f'attachment; filename="{download}"')
             self.end_headers()
             self.wfile.write(data)
 
@@ -76,7 +82,18 @@ def handler(jobs):
             if self.path == '/':
                 return self.send(200, (ROOT / 'web/index.html').read_bytes(), 'text/html; charset=utf-8')
             if self.path.startswith('/api/jobs/'):
-                result = jobs.status(self.path.removeprefix('/api/jobs/'))
+                identifier = self.path.removeprefix('/api/jobs/')
+                if '/' in identifier:
+                    identifier, format_path = identifier.split('/', 1)
+                    kind = {'report.json': 'json', 'report.txt': 'txt'}.get(format_path)
+                    if kind is None:
+                        return self.send(404, dict(error='Not found'))
+                    result = jobs.status(identifier)
+                    if result is None or result['status'] != 'complete':
+                        return self.send(409, dict(error='Completed result unavailable'))
+                    data, content_type = report_bytes(result['result'], kind)
+                    return self.send(200, data, content_type, f'BioPredict-report.{kind}')
+                result = jobs.status(identifier)
                 return self.send(200 if result else 404, result or dict(error='Unknown job'))
             return self.send(404, dict(error='Not found'))
 
@@ -105,8 +122,9 @@ def handler(jobs):
 
 def main():
     jobs = PredictionJobs()
-    server = ThreadingHTTPServer(('127.0.0.1', 8000), handler(jobs))
-    print('BioPredict research prototype: http://127.0.0.1:8000', flush=True)
+    port = int(os.getenv('PORT', '8000'))
+    server = ThreadingHTTPServer(('127.0.0.1', port), handler(jobs))
+    print(f'BioPredict research prototype: http://127.0.0.1:{port}', flush=True)
     try:
         server.serve_forever()
     except KeyboardInterrupt:

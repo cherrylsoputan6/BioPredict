@@ -22,6 +22,7 @@ class ValidationTests(unittest.TestCase):
         renamed = record()
         renamed.features[0].qualifiers.update(gene=['NEWNAME'], gene_synonym=['OTHER; EXAMPLE'])
         self.assertEqual(checked_protein(renamed, 'EXAMPLE', 'NM_123.1'), 'MR')
+        self.assertEqual(checked_protein(renamed, 'example', 'NM_123.1'), 'MR')
         with self.assertRaises(ValueError):
             checked_protein(renamed, 'EXAM', 'NM_123.1')
         renamed.features.append(renamed.features[0])

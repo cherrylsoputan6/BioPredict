@@ -3,6 +3,8 @@ import argparse
 import json
 import re
 import socket
+import hashlib
+from datetime import datetime, timezone
 from pathlib import Path
 
 import joblib
@@ -48,10 +50,15 @@ def predict(gene, text, model_path, sequence_cache, ortholog_cache, timeout=60):
         raise ValueError('Enter a gene symbol')
     variant = parse_missense(text)
     # Only load a model created locally by this project.
-    artifact = joblib.load(model_path)
+    portable = Path(model_path).suffix == '.json'
+    if portable:
+        from portable_model import load_portable
+        artifact = load_portable(model_path)
+    else:
+        artifact = joblib.load(model_path)
     config = artifact['configuration']
     if (artifact['features'] != FEATURES or config['features'] != FEATURES or
-            artifact['sklearn_version'] != sklearn.__version__):
+            (not portable and artifact['sklearn_version'] != sklearn.__version__)):
         raise ValueError('Model features or scikit-learn version differ; use the matching training environment')
     if config['threshold_label_1'] != 0.5 or config['conservation']['server'] != 'oct2024':
         raise ValueError('Unsupported model configuration')
@@ -80,6 +87,10 @@ def predict(gene, text, model_path, sequence_cache, ortholog_cache, timeout=60):
                 model_label=int(score >= 0.5), model_class='pathogenic' if score >= 0.5 else 'benign',
                 score_label_1=score, threshold=0.5, ortholog_species=sorted(observations),
                 features=dict(zip(FEATURES, values)),
+                created_utc=datetime.now(timezone.utc).isoformat(),
+                model_id=artifact.get('model_id', 'biopredict-eight-feature-baseline-v1'),
+                model_artifact_sha256=hashlib.sha256(Path(model_path).read_bytes()).hexdigest(),
+                source_archive='Ensembl October 2024',
                 interpretation='Research model output, not a clinical classification. Score is uncalibrated and is not a probability of disease. This variant may overlap the development dataset.')
 
 

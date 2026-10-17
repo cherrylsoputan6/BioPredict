@@ -2,6 +2,38 @@
 
 ## Current decision
 
+### Public research application readiness (2026-10-16)
+
+The local app now includes amino-acid explanations, report downloads and model
+provenance. A data-only portable artifact reproduces the unchanged baseline on
+679 training examples within 1.11e-16. It does not retrain or replace the model.
+The Render Blueprint, fixed deployment dependencies, WSGI adapter, health check,
+bounded jobs and same-origin submission checks are prepared. Public deployment
+is not verified: no hosting account connection/credential is available.
+Free-tier caches/jobs are temporary and can disappear on restart.
+Final local verification: 43 automated tests pass; the browser confirmed a refused
+start-codon input, a successful frozen-baseline prediction and an actual JSON
+attachment download. Both report formats and attachment headers are verified by
+automated HTTP tests. A visual preview is retained in `reports/web-preview.png`.
+Gunicorn/Linux build and public HTTPS verification remain unperformed until hosting
+access is provided; no public URL or independent evaluation has been fabricated.
+
+Independent clinical validation remains **not completed**. Source investigation,
+prospective novelty/evidence gates and a prespecified protocol are documented in
+`docs/INDEPENDENT_EVALUATION.md`. A later download or ProteinGym clinical subset is
+not automatically independent; functional DMS outcomes are not clinical labels.
+The frozen registry must include all original Variant IDs and all development
+genes/demonstrations before screening a genuinely later archived snapshot.
+The registry is now built locally: 9,223,698 original source rows, 4,646,126 unique
+VariationIDs and 1,016 excluded stable GeneIDs. The earlier 100-variant cohort was
+reconstructed from unchanged candidate order and validated caches after its
+intermediate CSV had been cleaned up; all IDs were verified in the full source.
+`reports/prospective_registry_manifest.json` records hashes/history. The registry
+is a novelty exclusion baseline, not a new cohort or evidence of external validity.
+No fabricated cohort, external metrics, calibration claim or OOD guarantee has
+been added. Clinical/public-production completion remains blocked on independent
+data/provenance; public research-demo completion remains blocked on hosting access.
+
 Keep the frozen eight-feature logistic-regression model as the research baseline.
 The three local sequence-context features remain experimental. Do not select a
 replacement based on the existing test split or conditional bootstrap intervals.

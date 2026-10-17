@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: biopredict-research
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements-deploy.txt
+    startCommand: gunicorn deploy_app:app --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 60
+    healthCheckPath: /health
+    autoDeploy: false
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.14
+      - key: NCBI_EMAIL
+        sync: false

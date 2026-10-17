@@ -20,7 +20,7 @@ def matches_gene(feature, gene):
     names = set(feature.qualifiers.get('gene', []))
     for value in feature.qualifiers.get('gene_synonym', []):
         names.update(name.strip() for name in value.split(';'))
-    return gene in names
+    return gene.casefold() in {name.casefold() for name in names}
 
 
 def checked_protein(record, gene, accession):
